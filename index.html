@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Astro Odyssey — A neon cyber endless space shooter">
+    <title>Astro Odyssey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+
+        <!-- HUD -->
+        <div id="hud" class="hidden">
+            <div class="hud-row hud-top">
+                <div class="hud-group">
+                    <div class="hud-item"><span class="hud-label">SCORE</span><span id="hud-score" class="hud-value">0</span></div>
+                    <div class="hud-item"><span class="hud-label">BEST</span><span id="hud-best" class="hud-value">0</span></div>
+                </div>
+                <div class="hud-group">
+                    <div class="hud-item"><span class="hud-label">KILLS</span><span id="hud-kills" class="hud-value">0</span></div>
+                    <div class="hud-item"><span class="hud-label">TIME</span><span id="hud-time" class="hud-value">0:00</span></div>
+                </div>
+                <div class="hud-group">
+                    <div class="hud-item"><span class="hud-label">LIVES</span><span id="hud-lives" class="hud-value">3</span></div>
+                    <div class="hud-item"><span class="hud-label">FPS</span><span id="hud-fps" class="hud-value">60</span></div>
+                </div>
+            </div>
+            <div id="powerup-timers"></div>
+            <div id="boss-warning" class="boss-warning hidden">
+                <span class="boss-warning-text">⚠ BOSS INCOMING ⚠</span>
+            </div>
+            <button id="mobile-pause" class="mobile-only" aria-label="Pause">⏸</button>
+            <button id="fire-btn" class="mobile-only" aria-label="Fire">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="2" x2="12" y2="16"/>
+                    <polygon points="8,16 16,16 14,22 10,22"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="overlay">
+            <div class="menu-content">
+                <h1 class="game-title">ASTRO<span class="title-accent">ODYSSEY</span></h1>
+                <p class="game-subtitle">Endless Neon Space Shooter</p>
+                <button id="start-btn" class="btn btn-primary">START GAME</button>
+                <div class="menu-settings">
+                    <button id="mute-btn" class="btn btn-icon" title="Toggle Sound">🔊</button>
+                    <button id="autofire-btn" class="btn btn-toggle" title="Toggle Auto Fire">AUTO FIRE: ON</button>
+                </div>
+                <div class="menu-instructions">
+                    <p class="instruction-desktop"><strong>Desktop:</strong> WASD / Arrows to move · Space / Click to fire · P to pause · R to restart</p>
+                    <p class="instruction-mobile hidden"><strong>Mobile:</strong> Drag to move · Auto Fire toggle · Tap ⏸ to pause</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pause Menu -->
+        <div id="pause-menu" class="overlay hidden">
+            <div class="menu-content">
+                <h2 class="menu-heading">PAUSED</h2>
+                <button id="resume-btn" class="btn btn-primary">RESUME</button>
+                <button id="quit-btn" class="btn btn-secondary">QUIT TO MENU</button>
+            </div>
+        </div>
+
+        <!-- Game Over / Stats -->
+        <div id="game-over" class="overlay hidden">
+            <div class="menu-content">
+                <h2 class="menu-heading game-over-title">GAME OVER</h2>
+                <div class="stats-grid">
+                    <div class="stat-row"><span class="stat-label">Final Score</span><span id="stat-score" class="stat-value">0</span></div>
+                    <div class="stat-row"><span class="stat-label">Best Score</span><span id="stat-best" class="stat-value">0</span></div>
+                    <div class="stat-row"><span class="stat-label">Kills</span><span id="stat-kills" class="stat-value">0</span></div>
+                    <div class="stat-row"><span class="stat-label">Bosses Defeated</span><span id="stat-bosses" class="stat-value">0</span></div>
+                    <div class="stat-row"><span class="stat-label">Time Survived</span><span id="stat-time" class="stat-value">0:00</span></div>
+                    <div class="stat-row"><span class="stat-label">Accuracy</span><span id="stat-accuracy" class="stat-value">0%</span></div>
+                </div>
+                <p id="restart-instruction" class="restart-instruction">Press R to Restart</p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
