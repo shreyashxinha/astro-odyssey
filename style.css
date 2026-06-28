@@ -197,7 +197,7 @@ body.touch-device .mobile-only {
 /* ===== Mobile Fire Button ===== */
 #fire-btn {
     position: absolute;
-    bottom: 2rem;
+    bottom: 4rem;
     left: 2rem;
     width: 4.5rem;
     height: 4.5rem;
